@@ -11,16 +11,21 @@ class CountdownTimer {
   }
 
   runTimer() {
+    this.timer();
     this.intervalId = setInterval(() => {
-      this.currentTime = Date.now();
-      const deltaTime = this.targetDate - this.currentTime;
-
-      if (deltaTime < 1000 && deltaTime > 0) {
-        this.stopTimer();
-      }
-
-      this.updateClockFace(deltaTime);
+      this.timer();
     }, 1000);
+  }
+
+  timer() {
+    this.currentTime = Date.now();
+    const deltaTime = this.targetDate - this.currentTime;
+
+    if (deltaTime < 1000 && deltaTime > 0) {
+      this.stopTimer();
+    }
+
+    this.updateClockFace(deltaTime);
   }
 
   updateClockFace(time) {
@@ -53,7 +58,7 @@ const timer = new CountdownTimer({
 
 // const timer = new CountdownTimer({
 //   selector: '#timer-1',
-//   targetDate: new Date(2020, 3, 11, 0, 7, 40, 0),
+//   targetDate: new Date(2020, 3, 11, 14, 3, 0, 0),
 // });
 
 timer.runTimer();
